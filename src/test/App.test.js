@@ -1,15 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-var assert = require('assert');
-var C = require('./cash.js')
-var A = require('./anagram.js')
+import App from '../App';
+// var assert = require('chai').assert;
+// var expect = require('chai').expect;
+var should = require('chai').should();
+var { assert, expect } = require('chai')
+var C = require('../cash.js');
+var A = require('../anagram.js');
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+let numbers = [1, 2, 3, 4, 5];
+
+// Assert
+
+assert.isArray(numbers, 'is array of numnbers');
+assert.include(numbers, 2, 'array contains 2');
+assert.lengthOf(numbers, 5, 'array contains 5 numbers');
+
+//Expect
+
+expect(numbers).to.be.an('array').that.includes(2);
+expect(numbers).to.have.lengthOf(5);
+
+// Should
+
+numbers.should.be.an('array').that.includes(2);
+numbers.should.have.lengthOf(5);
+
+
 
 describe('Array', () => {
   describe('#indexOf()', () => {
